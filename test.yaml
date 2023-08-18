@@ -1,9 +1,0 @@
-- name: Template Test
-  gather_facts: true
-  connection: local
-
-  tasks:
-    - name: Get Run 
-      ios_command:
-         commands:
-            - show run
