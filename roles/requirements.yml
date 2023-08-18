@@ -1,6 +1,10 @@
 ---
 collections:
   - name: cisco.ios
+    source: https://galaxy.ansible.com
   - name: cisco.aci
+    source: https://galaxy.ansible.com
   - name: cisco.nxos
+    source: https://galaxy.ansible.com
   - name: community.vmware
+    source: https://galaxy.ansible.com
