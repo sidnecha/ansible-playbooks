@@ -1,0 +1,6 @@
+---
+collections:
+  - name: cisco.ios
+  - name: cisco.aci
+  - name: cisco.nxos
+  - name: community.vmware
