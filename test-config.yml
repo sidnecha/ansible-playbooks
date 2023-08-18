@@ -2,7 +2,7 @@
   hosts: all
   tasks:
     - name: Config Test
-      ios_config:
-          lines:
+      cisco.ios.ios_config:
+          commands:
             - interface loopback20
             - description automated
