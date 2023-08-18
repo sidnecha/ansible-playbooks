@@ -1,7 +1,5 @@
 - name: Template Test
-  gather_facts: true
-  connection: local
-
+  hosts: all
   tasks:
     - name: Get Run 
       ios_command:
