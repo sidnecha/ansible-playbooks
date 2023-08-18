@@ -2,7 +2,7 @@
   hosts: localhost 
   tasks: Fetch galaxy 
     ansible.builtin.command:
-    cmd: "ansible-galaxy collection install cisco.ios"
+      cmd: "ansible-galaxy collection install cisco.ios"
 - name: Config Test
   hosts: all
   tasks:
