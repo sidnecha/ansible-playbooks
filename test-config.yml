@@ -1,0 +1,8 @@
+- name: Hello World Sample
+  hosts: all
+  tasks:
+    - name: Config Test
+      ios_config:
+          lines:
+            - interface loopback20
+            - description automated
