@@ -1,7 +1,15 @@
 - name: Template Test
   hosts: all
+  gather_facts: false
+  vars: # for execution environment
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.nxos.nxos
   tasks:
-    - name: Get Run 
-      ios_command:
-         commands:
-            - show run
+    - name: Get Version 
+      cisco.nxos.nxos_command:
+         lines:
+            - show version
+          register: output
+    - name: print output
+      debug:
+        var: output.stdout_lines
