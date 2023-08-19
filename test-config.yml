@@ -1,5 +1,6 @@
 - name: Config Test
   hosts: all
+  gather_facts: false
   tasks:
     - name: Config Test
       cisco.nxos.nxos_config:
