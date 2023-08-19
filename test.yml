@@ -9,7 +9,7 @@
       cisco.nxos.nxos_command:
          commands:
             - show version
-         register: output
+      register: output
     - name: print output
       debug:
         var: output.stdout_lines
