@@ -7,7 +7,7 @@
   tasks:
     - name: Get Version 
       cisco.nxos.nxos_command:
-         lines:
+         commands:
             - show version
          register: output
     - name: print output
