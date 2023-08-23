@@ -8,7 +8,7 @@
     - name: Show interface 
       cisco.nxos.nxos_command:
          commands:
-            - show interface {{ interface }}
+            - show run interface {{ interface }}
       register: output_pre
     - name: Print output
       debug:
@@ -17,11 +17,16 @@
       cisco.nxos.nxos_config:
           lines:
             - interface {{ interface }}
+            - where
             - no shutdown
+      register: output_exec
+    - name: Print output
+      debug:
+        var: output_exec.stdout_lines
     - name: Show interface 
       cisco.nxos.nxos_command:
          commands:
-            - show interface {{ interface }}
+            - show run interface {{ interface }}
       register: output_pos
     - name: Print output
       debug:
