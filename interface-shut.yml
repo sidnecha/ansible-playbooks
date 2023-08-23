@@ -8,12 +8,12 @@
     - name: Config shutdown interface
       cisco.nxos.nxos_config:
           lines:
-            - 'interface {{interface}}'
+            - interface {{interface}}
             - shutdown
     - name: Show interface 
       cisco.nxos.nxos_command:
          commands:
-            - 'show interface {{interface}}'
+            - show interface {{interface}}
       register: output
     - name: Print output
       debug:
