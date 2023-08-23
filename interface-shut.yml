@@ -18,10 +18,6 @@
           lines:
             - shutdown
           parents: interface {{ interface }}
-      register: output_exec
-    - name: Print output
-      debug:
-        var: output_exec.stdout_lines
     - name: Show interface 
       cisco.nxos.nxos_command:
          commands:
