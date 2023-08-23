@@ -5,16 +5,24 @@
     ansible_connection: ansible.netcommon.network_cli
     ansible_network_os: cisco.nxos.nxos
   tasks:
+    - name: Show interface 
+      cisco.nxos.nxos_command:
+         commands:
+            - show interface {{ interface }}
+      register: output_pre
+    - name: Print output
+      debug:
+        var: output_pre.stdout_lines
     - name: Config shutdown interface
       cisco.nxos.nxos_config:
           lines:
-            - interface {{interface}}
+            - interface {{ interface }}
             - shutdown
     - name: Show interface 
       cisco.nxos.nxos_command:
          commands:
-            - show interface {{interface}}
-      register: output
+            - show interface {{ interface }}
+      register: output_pos
     - name: Print output
       debug:
-        var: output.stdout_lines
+        var: output_pos.stdout_lines
