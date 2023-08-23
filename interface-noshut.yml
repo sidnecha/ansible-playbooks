@@ -1,0 +1,20 @@
+- name: Interface shutdown
+  hosts: all
+  gather_facts: false
+  vars: # for execution environment
+    ansible_connection: ansible.netcommon.network_cli
+    ansible_network_os: cisco.nxos.nxos
+  tasks:
+    - name: Config shutdown interface
+      cisco.nxos.nxos_config:
+          lines:
+            - 'interface {interface}'
+            - no shutdown
+    - name: Show interface 
+      cisco.nxos.nxos_command:
+         commands:
+            - 'show interface {interface}'
+      register: output
+    - name: Print output
+      debug:
+        var: output.stdout_lines
