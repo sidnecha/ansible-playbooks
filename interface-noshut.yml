@@ -16,9 +16,8 @@
     - name: Config shutdown interface
       cisco.nxos.nxos_config:
           lines:
-            - interface {{ interface }}
-            - where
-            - no shutdown
+            - shutdown
+          parents: interface {{ interface }}
       register: output_exec
     - name: Print output
       debug:
