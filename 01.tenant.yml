@@ -4,7 +4,7 @@
 
   vars:
     host_key_checking: false
-    validate_certs: false
+    validate_certs: no
     use_ssl: false  
 
   tasks:
