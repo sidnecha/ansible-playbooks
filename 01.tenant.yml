@@ -2,6 +2,11 @@
   hosts: all
   gather_facts: false
 
+  vars:
+    host_key_checking: False
+    validate_certs: false
+    use_ssl: false  
+
   tasks:
     - name: Add a new tenant
       cisco.aci.aci_tenant:
