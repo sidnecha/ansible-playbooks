@@ -1,0 +1,9 @@
+- name: Add a new tenant
+  hosts: all
+  gather_facts: false
+  cisco.aci.aci_tenant:
+    tenant: "tn_Legacy"
+    description: "" 
+    state: present
+  delegate_to: localhost
+
