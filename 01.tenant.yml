@@ -4,8 +4,8 @@
 
   tasks:
     - name: Add a new tenant
-      validate_certs: false
       cisco.aci.aci_tenant:
+        validate_certs: false
         tenant: "{{ tenant }}"
         description: "" 
         state: "{{ state }}"
