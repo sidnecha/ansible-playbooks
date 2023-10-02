@@ -5,9 +5,12 @@
   tasks:
     - name: Add a new tenant
       cisco.aci.aci_tenant:
-        validate_certs: false
+        host: "{{ aci_host }}"
+        username: "{{ aci_username }}"
+        password: "{{ aci_password }}"
         tenant: "{{ tenant }}"
         description: "" 
         state: "{{ state }}"
+        validate_certs: false
       delegate_to: localhost
 
