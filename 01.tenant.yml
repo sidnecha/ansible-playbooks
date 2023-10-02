@@ -1,9 +1,12 @@
-- name: Add a new tenant
+- name: Add a new Tenant
   hosts: all
   gather_facts: false
-  cisco.aci.aci_tenant:
-    tenant: "{{ tenant }}"
-    description: "" 
-    state: present
-  delegate_to: localhost
+
+  tasks:
+    - name: Add a new tenant
+      cisco.aci.aci_tenant:
+        tenant: "{{ tenant }}"
+        description: "" 
+        state: "{{ state }}"
+      delegate_to: localhost
 
