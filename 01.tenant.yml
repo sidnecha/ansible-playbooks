@@ -3,7 +3,6 @@
   gather_facts: false
 
   vars:
-    ansible_connection: ansible.netcommon.network_cli
     host_key_checking: false
     validate_certs: false
     use_ssl: false  
