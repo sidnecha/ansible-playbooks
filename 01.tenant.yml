@@ -11,6 +11,8 @@
         username: "{{ aci_username }}"
         password: "{{ aci_password }}"
         tenant: "{{ tenant }}"
+        use_proxy: no
+        validate_certs: no
         description: "" 
         state: "{{ state }}"
       delegate_to: localhost
