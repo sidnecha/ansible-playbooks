@@ -2,7 +2,7 @@
   hosts: all
   gather_facts: false
   cisco.aci.aci_tenant:
-    tenant: "tn_Legacy"
+    tenant: "{{ tenant }}"
     description: "" 
     state: present
   delegate_to: localhost
