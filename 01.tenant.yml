@@ -2,7 +2,8 @@
   hosts: all
   connection: local
   gather_facts: FALSE
-
+  vars:
+    ansible_connection: local
   tasks:
     - name: Add a new tenant
       cisco.aci.aci_tenant:
