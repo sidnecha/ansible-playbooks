@@ -1,6 +1,7 @@
 - name: Add a new Tenant
   hosts: all
-  gather_facts: false
+  connection: local
+  gather_facts: FALSE
 
   tasks:
     - name: Add a new tenant
@@ -11,6 +12,5 @@
         tenant: "{{ tenant }}"
         description: "" 
         state: "{{ state }}"
-        validate_certs: false
       delegate_to: localhost
 
