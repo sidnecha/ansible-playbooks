@@ -2,13 +2,9 @@
   hosts: all
   gather_facts: false
 
-  vars:
-    host_key_checking: false
-    validate_certs: no
-    use_ssl: false  
-
   tasks:
     - name: Add a new tenant
+      validate_certs: false
       cisco.aci.aci_tenant:
         tenant: "{{ tenant }}"
         description: "" 
