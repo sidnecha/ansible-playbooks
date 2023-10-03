@@ -7,12 +7,7 @@
   tasks:
     - name: Add a new tenant
       cisco.aci.aci_tenant:
-        host: "{{ aci_host }}"
-        username: "{{ aci_username }}"
-        password: "{{ aci_password }}"
-        tenant: "{{ tenant }}"
-        use_proxy: no
-        validate_certs: no
+        <<: *aci_login
         description: "" 
         state: "{{ state }}"
       delegate_to: localhost
