@@ -1,7 +1,7 @@
 - name: Add a new Tenant
   hosts: all
   connection: local
-  gather_facts: FALSE
+  gather_facts: false
   vars:
     ansible_connection: local
   tasks:
