@@ -5,5 +5,3 @@ collections:
     source: https://galaxy.ansible.com
   - name: cisco.ios
     source: https://galaxy.ansible.com
-validate_certs: no
-use_ssl: yes
