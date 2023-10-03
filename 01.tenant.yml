@@ -13,6 +13,7 @@
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
+        tenant: "{{ tenant }}"
         description: "" 
         state: "{{ state }}"
       delegate_to: localhost
