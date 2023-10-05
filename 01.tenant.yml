@@ -3,7 +3,7 @@
   connection: local
   gather_facts: false
   vars:
-    - aci_login: &aci_login
+    aci_login: &aci_login
         hostname: "{{ hostname }}"
         use_proxy: "{{ use_proxy }}"
         use_ssl: "{{ use_ssl }}"
