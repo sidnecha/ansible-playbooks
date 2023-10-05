@@ -18,8 +18,7 @@
         <<: *aci_login
         tenant: "{{ tenant_name }}"
         ap: "{{ ap_name }}"
-        description: "{{ ap_description if ap_description is defined else omit}}"
+        description: "{{ ap_description }}"
         state: "{{ ap_status }}"
       delegate_to: localhost
-      loop: "{{ application_profile }}"
-      when: application_profile is defined
+
