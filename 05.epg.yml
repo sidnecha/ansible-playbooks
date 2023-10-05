@@ -28,5 +28,4 @@
         priority: "{{ qos_class if qos_class is defined and qos_class != '' else omit }}"
         state: "{{ epg_status }}"
       delegate_to: localhost
-      loop: "{{ end_point_group }}"
-      when: end_point_group is defined
+

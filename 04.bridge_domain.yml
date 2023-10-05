@@ -35,5 +35,4 @@
         endpoint_retention_policy: "{{ endpoint_retention_policy if endpoint_retention_policy is defined and endpoint_retention_policy != '' else omit }}"
         state: "{{ bd_status }}"
       delegate_to: localhost
-      loop: "{{ bridge_domain }}"
-      when: bridge_domain is defined
+
