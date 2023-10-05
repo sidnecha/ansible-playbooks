@@ -17,16 +17,16 @@
     - name: Add a new EPG
       cisco.aci.aci_epg:
         <<: *aci_login
-        tenant: "{{ item.tenant_name }}"
-        ap: "{{ item.ap_name}}"
-        epg: "{{ item.epg_name }}"
-        description: "{{ item.epg_description if item.epg_description is defined else omit}}"
-        bd: "{{ item.bd_name }}"
-        preferred_group: "{{ item.preferred_group if item.preferred_group is defined and item.preferred_group != '' else omit }}"
-        intra_epg_isolation: "{{ item.intra_epg_isolation if item.intra_epg_isolation is defined and item.intra_epg_isolation != '' else omit }}"
-        name_alias: "{{ item.name_alias if item.name_alias is defined and item.name_alias != '' else omit }}"
-        priority: "{{ item.qos_class if item.qos_class is defined and item.qos_class != '' else omit }}"
-        state: "{{ item.epg_status }}"
+        tenant: "{{ tenant_name }}"
+        ap: "{{ ap_name}}"
+        epg: "{{ epg_name }}"
+        description: "{{ epg_description if epg_description is defined else omit}}"
+        bd: "{{ bd_name }}"
+        preferred_group: "{{ preferred_group if preferred_group is defined and preferred_group != '' else omit }}"
+        intra_epg_isolation: "{{ intra_epg_isolation if intra_epg_isolation is defined and intra_epg_isolation != '' else omit }}"
+        name_alias: "{{ name_alias if name_alias is defined and name_alias != '' else omit }}"
+        priority: "{{ qos_class if qos_class is defined and qos_class != '' else omit }}"
+        state: "{{ epg_status }}"
       delegate_to: localhost
       loop: "{{ end_point_group }}"
       when: end_point_group is defined

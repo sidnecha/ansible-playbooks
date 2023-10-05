@@ -16,10 +16,10 @@
     - name: Add a new AP
       cisco.aci.aci_ap:
         <<: *aci_login
-        tenant: "{{ item.tenant_name }}"
-        ap: "{{ item.ap_name }}"
-        description: "{{ item.ap_description if item.ap_description is defined else omit}}"
-        state: "{{ item.ap_status }}"
+        tenant: "{{ tenant_name }}"
+        ap: "{{ ap_name }}"
+        description: "{{ ap_description if ap_description is defined else omit}}"
+        state: "{{ ap_status }}"
       delegate_to: localhost
       loop: "{{ application_profile }}"
       when: application_profile is defined
