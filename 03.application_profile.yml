@@ -1,0 +1,26 @@
+---
+- name : Application Profile  Provisioning
+  gather_facts: false
+  hosts: all
+  vars_files:
+   - "{{ aci_variable_filename }}"
+  vars:
+    aci_login: &aci_login
+        hostname: "{{ hostname }}"
+        use_proxy: "{{ use_proxy }}"
+        use_ssl: "{{ use_ssl }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+
+  tasks:
+    - name: Add a new AP
+      cisco.aci.aci_ap:
+        <<: *aci_login
+        tenant: "{{ item.tenant_name }}"
+        ap: "{{ item.ap_name }}"
+        description: "{{ item.ap_description if item.ap_description is defined else omit}}"
+        state: "{{ item.ap_status }}"
+      delegate_to: localhost
+      loop: "{{ application_profile }}"
+      when: application_profile is defined

@@ -1,0 +1,28 @@
+---
+- name : VFF Provisioning
+  gather_facts: false
+  hosts: all
+  vars_files:
+   - "{{ aci_variable_filename }}"
+  vars:
+    aci_login: &aci_login
+        hostname: "{{ hostname }}"
+        use_proxy: "{{ use_proxy }}"
+        use_ssl: "{{ use_ssl }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+        
+  tasks:
+    - name: Add a new VRF to a tenant
+      cisco.aci.aci_vrf:
+        <<: *aci_login
+        vrf: "{{ item.vrf_name }}"
+        tenant: "{{ item.tenant_name }}"
+        description: "{{ item.vrf_description if item.vrf_description is defined else omit}}"
+        policy_control_preference: "{{ item.vrf_policy_enforcement }}"
+        policy_control_direction:  "{{ item.vrf_policy_enforcement_direction }}"
+        state: "{{ item.vrf_status }}"
+      delegate_to: localhost
+      loop: "{{ vrf }}"
+      when: vrf is defined

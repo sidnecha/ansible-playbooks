@@ -1,0 +1,40 @@
+---
+- name : Bridge Domain Provisioning
+  gather_facts: false
+  hosts: all
+  vars_files:
+   - "{{ aci_variable_filename }}"
+  vars:
+    aci_login: &aci_login
+        hostname: "{{ hostname }}"
+        use_proxy: "{{ use_proxy }}"
+        use_ssl: "{{ use_ssl }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        validate_certs: no
+
+  tasks:
+
+    - name: Add Bridge Domain
+      cisco.aci.aci_bd:
+        <<: *aci_login
+        tenant: "{{ item.tenant_name }}"
+        bd: "{{ item.bd_name }}"
+        mac_address: "{{ item.mac if item.mac is defined and item.mac !='' else omit }}"
+        vrf: "{{ item.vrf_name }}"
+        enable_multicast: "{{ item.enablePim if item.enablePim is defined and item.enablePim != '' else omit }}"
+        enable_routing: "{{ item.unicast_routing if item.unicast_routing is defined and item.unicast_routing != '' else omit }}"
+        endpoint_move_detect: "{{ item.endpoint_move_detect_mode if item.endpoint_move_detect_mode is defined and item.endpoint_move_detect_mode != '' else omit }}"
+        igmp_snoop_policy: "{{ item.igmp_snoop_policy if item.igmp_snoop_policy is defined and item.igmp_snoop_policy != '' else omit }}"
+        l2_unknown_unicast: "{{ item.l2_unknown_unicast if item.l2_unknown_unicast is defined and item.l2_unknown_unicast != '' else omit }}"
+        l3_unknown_multicast: "{{ item.l3_unknown_multicast if item.l3_unknown_multicast is defined and item.l3_unknown_multicast != '' else omit }}"
+        limit_ip_learn: "{{ item.limit_ip_learning_to_subnet if item.limit_ip_learning_to_subnet is defined and item.limit_ip_learning_to_subnet != '' else omit }}"
+        multi_dest: "{{ item.multi_dest_flood if item.multi_dest_flood is defined  and item.multi_dest_flood != '' else omit }}"
+        name_alias: "{{ item.name_alias if item.name_alias is defined  and item.name_alias != '' else omit }}"
+        arp_flooding: "{{ item.arp_flood if item.arp_flood is defined and item.arp_flood != '' else omit }}"
+        ip_learning: "{{ item.endpoint_data_plane_learning if item.endpoint_data_plane_learning is defined and item.endpoint_data_plane_learning != '' else omit }}"
+        endpoint_retention_policy: "{{ item.endpoint_retention_policy if item.endpoint_retention_policy is defined and item.endpoint_retention_policy != '' else omit }}"
+        state: "{{ item.bd_status }}"
+      delegate_to: localhost
+      loop: "{{ bridge_domain }}"
+      when: bridge_domain is defined
