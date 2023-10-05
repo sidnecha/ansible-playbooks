@@ -2,8 +2,7 @@
 - name : VFF Provisioning
   gather_facts: false
   hosts: all
-  vars_files:
-   - "{{ aci_variable_filename }}"
+
   vars:
     aci_login: &aci_login
         hostname: "{{ hostname }}"
@@ -12,7 +11,7 @@
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
-        
+
   tasks:
     - name: Add a new VRF to a tenant
       cisco.aci.aci_vrf:

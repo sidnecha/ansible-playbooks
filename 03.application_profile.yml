@@ -2,8 +2,7 @@
 - name : Application Profile  Provisioning
   gather_facts: false
   hosts: all
-  vars_files:
-   - "{{ aci_variable_filename }}"
+
   vars:
     aci_login: &aci_login
         hostname: "{{ hostname }}"
